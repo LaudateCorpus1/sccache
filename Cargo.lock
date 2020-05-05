@@ -2055,7 +2055,7 @@ dependencies = [
 
 [[package]]
 name = "sccache"
-version = "0.2.14-alpha.0"
+version = "0.2.14-electron.0"
 dependencies = [
  "ar",
  "assert_cmd",
