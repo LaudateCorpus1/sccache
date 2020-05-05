@@ -327,11 +327,13 @@ where
                     );
 
                     Box::new(extra_hashes.and_then(move |extra_hashes| {
+                        let mut args_to_hash = parsed_args.common_args.clone();
+                        args_to_hash.push(parsed_args.input.clone().into_os_string());
                         let key = {
                             hash_key(
                                 &executable_digest,
                                 parsed_args.language,
-                                &parsed_args.common_args,
+                                &args_to_hash,
                                 &extra_hashes,
                                 &env_vars,
                                 &preprocessor_result.stdout,
@@ -603,7 +605,7 @@ impl pkg::ToolchainPackager for CToolchainPackager {
 }
 
 /// The cache is versioned by the inputs to `hash_key`.
-pub const CACHE_VERSION: &[u8] = b"8";
+pub const CACHE_VERSION: &[u8] = b"9";
 
 lazy_static! {
     /// Environment variables that are factored into the cache key.
