@@ -96,7 +96,7 @@ impl CCompilerImpl for Clang {
 counted_array!(pub static ARGS: [ArgInfo<gcc::ArgData>; _] = [
     take_arg!("--serialize-diagnostics", OsString, Separated, PassThrough),
     take_arg!("--target", OsString, Separated, PassThrough),
-    take_arg!("-Xclang", OsString, Separated, XClang),
+    take_arg!("-Xclang", OsString, Separated, PassThrough),
     take_arg!("-add-plugin", OsString, Separated, PassThrough),
     take_arg!("-debug-info-kind", OsString, Concatenated('='), PassThrough),
     flag!("-fcolor-diagnostics", DiagnosticsColorFlag),
